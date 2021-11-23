@@ -6,7 +6,7 @@ public class GuessGameList {
 	public static void main(String[] args) {
 	int[] laCombinaison = new int[4];
 	int[] uneCombinaison = new int[4];
-	
+	Scanner reader = new Scanner(System.in);
 	tirerCombinaison(uneCombinaison);
 	
 	for(int i=0; i < uneCombinaison.length;i++) {
@@ -17,7 +17,7 @@ public class GuessGameList {
 	String result = "";
 	
 	while (coups <10) {
-	demanderCoup(laCombinaison);
+	demanderCoup(laCombinaison,reader);
 	//winner case 
 	if(laCombinaison[0] == uneCombinaison[0] && laCombinaison[1] == uneCombinaison[1] && laCombinaison[2] == uneCombinaison[2] && laCombinaison[3] == uneCombinaison[3]) {
 		System.out.println("Congratulations you won");
@@ -50,7 +50,9 @@ public class GuessGameList {
 	result = "";
 	coups++;
 	}
-
+	reader.close();
+	//loser case 
+	System.out.println("You lost try again");
 	}
 	
 	static int hasard(int max) {
@@ -64,9 +66,9 @@ public class GuessGameList {
 		}
 	}
 	
-	static void demanderCoup(int[] laCombinaison) {
+	static void demanderCoup(int[] laCombinaison,Scanner reader) {
 		for(int j=0; j <laCombinaison.length;j++) {
-				Scanner reader = new Scanner(System.in);
+				
 				System.out.println("Entrer le nombre en position " + (j+1));
 				int userInput = reader.nextInt();
 				
@@ -77,8 +79,8 @@ public class GuessGameList {
 					System.out.println("le chiffre doit être compris entre 1 et 6, veuillez resaisir un chiffre valide");
 					break;
 				}
-				
 			}
+
 		}
 	
 
