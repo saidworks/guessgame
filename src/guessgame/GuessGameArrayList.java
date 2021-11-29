@@ -21,7 +21,7 @@ public class GuessGameArrayList {
 		//winner case 
 		if(laCombinaison.get(0) == uneCombinaison.get(0) && laCombinaison.get(1) == uneCombinaison.get(1) && laCombinaison.get(2) == uneCombinaison.get(2) && laCombinaison.get(3) == uneCombinaison.get(3)) {
 			System.out.println("Congratulations you won");
-			result = "####";
+			
 		}
 		//right position and number
 		for(int i = 0; i < 4;i++) {
@@ -71,12 +71,13 @@ public class GuessGameArrayList {
 					System.out.println("Entrer le nombre en position " + (j+1));
 					int userInput = reader.nextInt();
 					
-					if((userInput>=1 ||userInput<=6) && (laCombinaison.contains(userInput))) {
-						laCombinaison.add(userInput);
-					}
-					else {
+					if((userInput<1 ||userInput>6) || (laCombinaison.contains(userInput))) {
 						System.out.println("le chiffre doit être compris entre 1 et 6, veuillez resaisir un chiffre valide");
 						break;
+						
+					}
+					else {
+						laCombinaison.add(userInput);
 					}
 				}
 
